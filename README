@@ -1,0 +1,7 @@
+This project will built on the work by Valerio Lucarini's 2014, Lorenz' 96 model. This is a little playgame to analyse the Lorenzmodel in respect to the Fluctuation Theorem for large N.
+
+The core of the code is taken and adapted from wikipedia:
+https://en.eikipedia.org/wiki/Lorenz_96_model
+The Lucarini paper and github.com/jswhit/L96 
+
+Work in Progress.
