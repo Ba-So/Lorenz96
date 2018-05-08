@@ -2,6 +2,10 @@
 # coding=utf-8
 
 import numpy as np
+# ugly workaround
+import PyQt4
+import matplotlib
+matplotlib.use('qt4agg')
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 from mpl_toolkits.mplot3d import Axes3D
@@ -24,9 +28,9 @@ class L96:
                   * y[0] - y[1])
         dy[self.N-1] = ((y[0]-y[self.N-3])
                     * y[self.N-2] - y[self.N-1])
-        for j in range(2, (self.N-2)):
+        for j in range(2, (self.N-1)):
             dy[j] = (
-                (y[j+1] - y[j+2])
+                (y[j+1] - y[j-2])
                 * y[j-1] - y[j]
             )
         dy = dy + self.F[self.j]
@@ -37,7 +41,7 @@ class L96:
         while self.j < len(self.F):
             ci = np.random.rand(self.N)
             self.y[self.j, :, :] = odeint(
-                self.Lorenz, ci, self.t, mxstep=3001,
+                self.Lorenz, ci, self.t,
                 rtol = 1e-8, atol = 1e-8)
             self.j = self.j + 1
 
